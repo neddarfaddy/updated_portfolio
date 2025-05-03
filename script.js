@@ -18,7 +18,7 @@ const closeButton = document.querySelector(".header_bottom");
 
 // INFINITE PULSE ANIMATION (separated from timeline)
 const pulse = gsap.to(".header_bottom", {
-  scale: 1.2,
+  scale: 1.1,
   duration: 1.5,
   repeat: -1,
   yoyo: true,
@@ -83,18 +83,36 @@ tl.add("start")
   );
 
 // BUTTON ANIMATIONS
-gsap.fromTo(
-  ".explore_button",
-  { rotate: -9 },
-  {
-    rotate: 9,
-    duration: 0.6,
+gsap.from(".hero_introduction_text", {
+  x: -400,
+  ease: "power4.inOut",
+  delay: 0.5,
+  opacity: 0,
+  duration: 1.5,
+});
+gsap.from(".footer", {
+  x: 400,
+  ease: "power4.inOut",
+  duration: 1.5,
+  delay: 0.5,
+  opacity: 0,
+});
+
+const button = gsap.timeline();
+button
+  .from(".explore_button", {
+    scale: 0,
+    duration: 1,
+    delay: 1.9,
+    ease: "power1.inOut",
+  })
+  .to(".explore_button", {
+    scale: 1.2,
+    duration: 0.8,
     repeat: -1,
     yoyo: true,
-    ease: "power1.inOut",
-  }
-);
-
+    ease: "sine.inOut",
+  });
 // EVENT CALLERS
 exploreButton.addEventListener("click", () => {
   pulse.pause(); // Reset pulse in case it's still active

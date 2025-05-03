@@ -40,7 +40,7 @@ tl.add("start") // optional label
     {
       delay: 0,
       x: 600,
-      duration: 1,
+      duration: 1.7,
       ease: "power1.inOut",
     },
     "start"
@@ -52,10 +52,10 @@ tl.add("start") // optional label
     {
       opacity: 0,
       x: 600,
-      duration: 1,
+      duration: 1.7,
       ease: "power1.inOut",
     },
-    "start+=0.6"
+    "start+=0.3"
   )
 
   // Step 3: Top content
@@ -74,13 +74,13 @@ tl.add("start") // optional label
   .from(
     ".header_bottom",
     {
-      scale: 0.1,
+      scale: 0.8,
       opacity: 0,
       duration: 2,
       transformOrigin: "bottom center",
       ease: "back.out(1.5)",
     },
-    "start+=1.1"
+    "start+=0.1"
   )
 
   // Step 2: Looping pulse animation

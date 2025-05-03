@@ -201,8 +201,6 @@ body {
   padding-top: 1rem;
   z-index: 2000;
   padding-bottom: 1rem;
-  border-top-left-radius: 200px;
-  border-bottom-left-radius: 200px;
 }
 
 .header_container {

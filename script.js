@@ -11,37 +11,36 @@ function raf(time) {
   requestAnimationFrame(raf);
 }
 requestAnimationFrame(raf);
-// CLASS ELEMENTS
-const CLASS_HIDDEN = ".hidden";
+
 // DOM ELEMENTS
 const exploreButton = document.querySelector(".explore_button");
 const closeButton = document.querySelector(".header_bottom");
-// EVENT CALLERS
-closeButton.addEventListener("click", () => tl.reverse());
-exploreButton.addEventListener("click", () => tl.restart());
-// GSAP ANIMATION
-gsap.fromTo(
-  ".explore_button",
-  { rotate: -9 },
-  {
-    rotate: 9,
-    duration: 0.6,
-    repeat: -1,
-    yoyo: true,
-    ease: "power1.inOut",
-  }
-);
 
-const tl = gsap.timeline({ paused: true });
-tl.add("start") // optional label
-  // Step 1: Overlay comes in with rounded edge
+// INFINITE PULSE ANIMATION (separated from timeline)
+const pulse = gsap.to(".header_bottom", {
+  scale: 1.2,
+  duration: 1.5,
+  repeat: -1,
+  yoyo: true,
+  paused: true,
+  ease: "sine.inOut",
+});
+
+// MAIN TIMELINE
+const tl = gsap.timeline({
+  paused: true,
+  onComplete: () => pulse.play(), // Start pulse after intro
+  onReverseComplete: () => pulse.pause(), // Stop pulse on close
+});
+
+tl.add("start")
+  // Step 1: Overlay comes in
   .from(
     ".header_overlay",
     {
-      delay: 0,
       x: 600,
       duration: 1.7,
-      ease: "power1.inOut",
+      ease: "power3.inOut",
     },
     "start"
   )
@@ -81,17 +80,28 @@ tl.add("start") // optional label
       ease: "back.out(1.5)",
     },
     "start+=0.1"
-  )
-
-  // Step 2: Looping pulse animation
-  .to(
-    ".header_bottom",
-    {
-      scale: 1.1,
-      duration: 1.5,
-      repeat: -1,
-      yoyo: true,
-      ease: "sine.inOut",
-    },
-    "start+=0.1" // Start after entrance ends
   );
+
+// BUTTON ANIMATIONS
+gsap.fromTo(
+  ".explore_button",
+  { rotate: -9 },
+  {
+    rotate: 9,
+    duration: 0.6,
+    repeat: -1,
+    yoyo: true,
+    ease: "power1.inOut",
+  }
+);
+
+// EVENT CALLERS
+exploreButton.addEventListener("click", () => {
+  pulse.pause(); // Reset pulse in case it's still active
+  tl.timeScale(1).restart(true); // Force restart immediately
+});
+
+closeButton.addEventListener("click", () => {
+  tl.pause(tl.duration()); // Jump to end
+  tl.timeScale(2).reverse(); // Reverse from end with speed
+});

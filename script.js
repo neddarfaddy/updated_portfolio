@@ -93,5 +93,5 @@ tl.add("start") // optional label
       yoyo: true,
       ease: "sine.inOut",
     },
-    "start+=3.1" // Start after entrance ends
+    "start+=0.1" // Start after entrance ends
   );

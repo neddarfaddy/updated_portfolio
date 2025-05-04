@@ -15,8 +15,18 @@ const headerButton = document.querySelector(".menu_button");
 const headerListButtons = document.querySelectorAll(".header_list_point");
 const headerAnimation = gsap.timeline({ paused: true });
 
-headerListButtons.forEach((point) => {
-  point.addEventListener("click", function () {
+document.querySelectorAll(".header_list_point a").forEach((link) => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const target = document.querySelector(this.getAttribute("href"));
+
+    lenis.scrollTo(target, {
+      offset: 0,
+      duration: 3.5,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // easeOutExpo feel
+    });
+
     headerAnimation.reverse();
   });
 });

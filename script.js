@@ -33,7 +33,7 @@ headerAnimation
     ".header_list_point",
     {
       opacity: 0,
-      duration: 0.3,
+      duration: 0.5,
       stagger: { each: 0.1, from: "end" }, // ← this reverses the order
     },
     ">-0.7"

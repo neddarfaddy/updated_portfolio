@@ -59,7 +59,7 @@ body {
   line-height: 1.6;
   position: relative;
   font-family: sans-serif;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .hidden {
@@ -69,6 +69,12 @@ body {
 /* HERO SECTION */
 .site-header {
   padding-top: 0.8rem;
+  position: fixed;
+  top: 0;
+  z-index: 4;
+  left: 0;
+  padding-inline: 0.8rem;
+  width: 100%;
 }
 
 .main-nav {
@@ -85,4 +91,102 @@ body {
   padding: 0.6rem 1rem;
   font-size: 0.9rem;
   border: none;
+}
+
+/* HERO SECTION */
+
+.hero-container {
+  height: 100%;
+  width: 100%;
+}
+
+.hero_content {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4rem;
+}
+
+.hero_header h1 {
+  font-size: 6rem;
+
+  font-weight: 300;
+}
+.header_footer {
+  align-self: flex-start;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  justify-content: space-between;
+}
+.header_footer_arrow p {
+  font-size: 1.4rem;
+}
+
+.header_footer_titles {
+  text-align: right;
+}
+
+.hero_header {
+  flex: 4;
+  padding-top: 1rem;
+  width: 100%;
+}
+
+.header_seperator {
+  background-color: white;
+  flex: 0.5;
+  width: 120%;
+  margin-left: -2rem;
+}
+
+img {
+  width: 100%;
+
+  object-fit: contain;
+}
+
+.header_overlay {
+  position: fixed;
+  height: 100%;
+
+  background-color: #0f0f0f;
+  width: 100%;
+  left: 0;
+
+  z-index: 2;
+}
+
+.header_content {
+  padding-top: 50%;
+  padding-bottom: 0.8rem;
+  padding-inline: 0.8rem;
+
+  height: 100%;
+  gap: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header_list {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+}
+
+.header_list * {
+  font-size: 4rem;
+  font-weight: 200;
+  line-height: 1.1;
+}
+
+.header_overlay_footer {
+  display: flex;
+  flex-direction: column;
 }

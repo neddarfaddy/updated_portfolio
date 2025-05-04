@@ -11,3 +11,32 @@ function raf(time) {
   requestAnimationFrame(raf);
 }
 requestAnimationFrame(raf);
+const headerButton = document.querySelector(".menu_button");
+const headerAnimation = gsap.timeline({ paused: true });
+
+headerAnimation
+  .from(".header_overlay", {
+    y: "-100vh",
+    duration: 1.2,
+    ease: "power2.inOut",
+  })
+  .from(
+    ".header_list_point",
+    {
+      opacity: 0,
+      duration: 0.3,
+      stagger: 0.1,
+    },
+    ">-0.6"
+  );
+let isPlayingForward = true; // ← You need this outside
+
+headerButton.addEventListener("click", function () {
+  if (isPlayingForward) {
+    headerAnimation.restart();
+  } else {
+    headerAnimation.reverse();
+  }
+
+  isPlayingForward = !isPlayingForward;
+});

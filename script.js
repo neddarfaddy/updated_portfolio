@@ -12,7 +12,14 @@ function raf(time) {
 }
 requestAnimationFrame(raf);
 const headerButton = document.querySelector(".menu_button");
+const headerListButtons = document.querySelectorAll(".header_list_point");
 const headerAnimation = gsap.timeline({ paused: true });
+
+headerListButtons.forEach((point) => {
+  point.addEventListener("click", function () {
+    headerAnimation.reverse();
+  });
+});
 
 headerAnimation
   .from(".header_overlay", {
@@ -36,7 +43,7 @@ headerAnimation
       duration: 0.5,
       stagger: { each: 0.1, from: "end" }, // ← this reverses the order
     },
-    ">-0.7"
+    ">-1"
   );
 let isPlayingForward = true; // ← You need this outside
 

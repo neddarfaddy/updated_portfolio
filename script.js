@@ -66,3 +66,93 @@ headerButton.addEventListener("click", function () {
 
   isPlayingForward = !isPlayingForward;
 });
+
+const numbers00 = document.querySelector(".loading_1");
+const numbers25 = document.querySelector(".loading_2");
+const numbers50 = document.querySelector(".loading_3");
+const numbers75 = document.querySelector(".loading_4");
+const numbers100 = document.querySelector(".loading_5");
+
+const introAnimation = gsap.timeline();
+
+introAnimation
+  .to(".loading_1", {
+    opacity: 1,
+    duration: 1,
+  })
+  .to(".loading_1", {
+    opacity: 0,
+    duration: 0.5,
+    onComplete: () => {
+      numbers00.style.display = "none";
+    },
+  })
+  .to(".loading_2", {
+    opacity: 1,
+    duration: 1,
+  })
+  .to(".loading_2", {
+    opacity: 0,
+    duration: 0.5,
+    onComplete: () => {
+      numbers25.style.display = "none";
+    },
+  })
+  .to(".loading_3", {
+    opacity: 1,
+    duration: 1,
+  })
+  .to(".loading_3", {
+    opacity: 0,
+    duration: 0.5,
+    onComplete: () => {
+      numbers50.style.display = "none";
+    },
+  })
+  .to(".loading_4", {
+    opacity: 1,
+    duration: 1,
+  })
+  .to(".loading_4", {
+    opacity: 0,
+    duration: 0.5,
+    onComplete: () => {
+      numbers75.style.display = "none";
+    },
+  })
+  .to(".loading_5", {
+    opacity: 1,
+    duration: 1,
+  })
+  .to(".loading_5", {
+    opacity: 0,
+    duration: 0.5,
+    onComplete: () => {
+      numbers100.style.display = "none";
+    },
+  })
+  .to(".loading_overlay", {
+    duration: 2,
+    ease: "power4.inOut",
+    opacity: 0,
+  })
+  .from(
+    ".site-header",
+    {
+      y: "-100%",
+      duration: 1,
+    },
+    ">-0.8"
+  )
+  .from(".about-container", {
+    y: "50%",
+    duration: 1,
+  })
+  .from(".hero_footer", {
+    opacity: 0,
+    duration: 1,
+  })
+  .from(".hero_header", {
+    x: "-110%",
+    duration: 1,
+  });

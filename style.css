@@ -68,6 +68,36 @@ body {
   display: none;
 }
 
+.loading_overlay {
+  z-index: 200;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background-color: white;
+  left: 0;
+
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  overflow: hidden;
+}
+
+.loading_overlay * {
+  color: black;
+  font-size: 10rem;
+  line-height: 1;
+  font-family: "PublicaPlay";
+  font-weight: 500;
+}
+.loading_1,
+.loading_2,
+.loading_3,
+.loading_4,
+.loading_5 {
+  opacity: 0;
+}
+
 /* NAV header SECTION */
 .site-header {
   padding-top: 0.8rem;

@@ -11,115 +11,47 @@ function raf(time) {
   requestAnimationFrame(raf);
 }
 requestAnimationFrame(raf);
-
-// DOM ELEMENTS
-const exploreButton = document.querySelector(".explore_button");
-const closeButton = document.querySelector(".header_bottom");
-
-// INFINITE PULSE ANIMATION (separated from timeline)
-const pulse = gsap.to(".header_bottom", {
-  scale: 1.1,
-  duration: 1.5,
-  repeat: -1,
-  yoyo: true,
-  paused: true,
-  ease: "sine.inOut",
-});
-
-// MAIN TIMELINE
-const tl = gsap.timeline({
-  paused: true,
-  onComplete: () => pulse.play(), // Start pulse after intro
-  onReverseComplete: () => pulse.pause(), // Stop pulse on close
-});
-
-tl.add("start")
-  // Step 1: Overlay comes in
-  .from(
-    ".header_overlay",
-    {
-      x: 600,
-      duration: 1.7,
-      ease: "power3.inOut",
-    },
-    "start"
-  )
-
-  // Step 2: List comes in
+const headerButton = document.querySelector(".header_button");
+const animation = gsap.timeline({ paused: true });
+animation
+  .from(".header_overlay", {
+    x: "100vw",
+    duration: 1,
+    ease: "power1.inOut",
+  })
   .from(
     ".header_list",
     {
+      delay: 0,
+      x: "100vw",
       opacity: 0,
-      x: 600,
-      duration: 1.7,
-      ease: "power1.inOut",
+      duration: 1,
     },
-    "start+=0.3"
+    "-=0.8"
   )
-
-  // Step 3: Top content
   .from(
-    ".header_top",
+    ".header_footer",
     {
+      x: "100vw",
       opacity: 0,
-      x: 600,
-      duration: 1.8,
-      ease: "power3.inOut",
+      duration: 1,
     },
-    "start+=0.3"
-  )
-
-  // Step 4: Bottom content
-  .from(
-    ".header_bottom",
-    {
-      scale: 0.8,
-      opacity: 0,
-      duration: 2,
-      transformOrigin: "bottom center",
-      ease: "back.out(1.5)",
-    },
-    "start+=0.1"
+    "-=0.7"
   );
 
-// BUTTON ANIMATIONS
-gsap.from(".hero_introduction_text", {
-  x: -400,
-  ease: "power4.inOut",
-  delay: 0.5,
-  opacity: 0,
-  duration: 1.5,
-});
-gsap.from(".footer", {
-  x: 400,
-  ease: "power4.inOut",
-  duration: 1.5,
-  delay: 0.5,
-  opacity: 0,
-});
+const buttonAnimation = gsap.timeline();
 
-const button = gsap.timeline();
-button
-  .from(".explore_button", {
-    scale: 0,
-    duration: 1,
-    delay: 1.9,
-    ease: "power1.inOut",
-  })
-  .to(".explore_button", {
-    scale: 1.2,
-    duration: 0.8,
-    repeat: -1,
-    yoyo: true,
-    ease: "sine.inOut",
-  });
-// EVENT CALLERS
-exploreButton.addEventListener("click", () => {
-  pulse.pause(); // Reset pulse in case it's still active
-  tl.timeScale(1).restart(true); // Force restart immediately
+headerButton.addEventListener("click", function () {
+  if (animation.reversed()) {
+    animation.play();
+  } else {
+    animation.reverse();
+  }
 });
-
-closeButton.addEventListener("click", () => {
-  tl.pause(tl.duration()); // Jump to end
-  tl.timeScale(2).reverse(); // Reverse from end with speed
+buttonAnimation.to(".header_button", {
+  scale: 1.15,
+  repeat: -1,
+  yoyo: true,
+  duration: 1,
+  ease: "power1.inOut",
 });

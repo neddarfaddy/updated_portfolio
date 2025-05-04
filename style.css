@@ -52,9 +52,9 @@ body {
 body {
   display: table;
   width: 100%;
-  padding-inline: 0.8rem;
+  padding-inline: 0.6rem;
   height: 100%;
-  background-color: #0a0a0a;
+  background-color: #000000;
   color: #ffffff;
   line-height: 1.6;
   position: relative;
@@ -84,11 +84,12 @@ body {
 }
 .nav-brand p {
   font-weight: 500;
+  font-size: 0.9rem;
 }
 
 .nav-menu button {
-  background-color: #323232;
-  padding: 0.6rem 1rem;
+  background-color: #252525;
+  padding: 0.5rem 1rem;
   font-size: 0.9rem;
   border: none;
 }
@@ -152,9 +153,9 @@ img {
 
 .header_overlay {
   position: fixed;
-  height: 100%;
+  min-height: 100%;
 
-  background-color: #0f0f0f;
+  background-color: #131313;
   width: 100%;
   left: 0;
 
@@ -162,11 +163,11 @@ img {
 }
 
 .header_content {
-  padding-top: 50%;
+  position: fixed;
+  padding-top: 40%;
   padding-bottom: 0.8rem;
   padding-inline: 0.8rem;
-
-  height: 100%;
+  min-height: 100%;
   gap: 2rem;
   width: 100%;
   display: flex;
@@ -181,7 +182,7 @@ img {
 }
 
 .header_list * {
-  font-size: 4rem;
+  font-size: 3rem;
   font-weight: 200;
   line-height: 1.1;
 }

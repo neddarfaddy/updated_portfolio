@@ -16,18 +16,27 @@ const headerAnimation = gsap.timeline({ paused: true });
 
 headerAnimation
   .from(".header_overlay", {
-    y: "-100vh",
-    duration: 1.2,
+    y: "-100%",
+    duration: 1.3,
     ease: "power2.inOut",
   })
+  .from(
+    ".header_overlay_footer",
+    {
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.1,
+    },
+    ">-0.6"
+  )
   .from(
     ".header_list_point",
     {
       opacity: 0,
       duration: 0.3,
-      stagger: 0.1,
+      stagger: { each: 0.1, from: "end" }, // ← this reverses the order
     },
-    ">-0.6"
+    ">-0.7"
   );
 let isPlayingForward = true; // ← You need this outside
 
